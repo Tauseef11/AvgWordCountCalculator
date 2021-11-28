@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvgWordCountCalculator", "AvgWordCountCalculator.csproj", "{A83DB95A-27B4-4242-8083-073111C3AE75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvgWordCountCalculator", "AvgWordCountCalculator.csproj", "{A83DB95A-27B4-4242-8083-073111C3AE75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvgWordCountCalculatorTests", "..\AverageWordCountCalculator\AvgWordCountCalculatorTests.csproj", "{4D6FFB5C-AC9C-4D27-8368-CCAF98DF26A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A83DB95A-27B4-4242-8083-073111C3AE75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A83DB95A-27B4-4242-8083-073111C3AE75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A83DB95A-27B4-4242-8083-073111C3AE75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D6FFB5C-AC9C-4D27-8368-CCAF98DF26A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D6FFB5C-AC9C-4D27-8368-CCAF98DF26A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D6FFB5C-AC9C-4D27-8368-CCAF98DF26A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D6FFB5C-AC9C-4D27-8368-CCAF98DF26A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
