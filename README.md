@@ -25,6 +25,8 @@ To run the tests, change to the AvgWordCountCalculator directory and execute the
 
 `dotnet test AvgWordCountCalculator.sln`
 
+NOTE: Unable to push MSTest via GitHub from Visual Studio. 
+
 ## Limitations
 
 - Lyrics are not always available for all songs
@@ -37,4 +39,5 @@ To run the tests, change to the AvgWordCountCalculator directory and execute the
 - Linking data where artist may be stored under multiple names.  
 - Implementing other APIs & resources for optimal results.
 - Caching previous search results to improve performance. 
-
+- Dynamic Loading Message 
+- Small profile of artist, e.g. band, area, country etc.
