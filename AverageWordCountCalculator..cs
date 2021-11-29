@@ -18,14 +18,17 @@ namespace AvgWordCountCalculator
             await Home();
         }
 
-        public static async Task Home()
+        // This method displays the defualt screen.
+        private static async Task Home()
         {
             Console.WriteLine("\nPlease enter artist's name:\n");
             var artist = Console.ReadLine();
+            Console.WriteLine("\nFetching results. . .");
             await GetRecordingsByArtist(artist);
         }
 
-        public static async Task GetRecordingsByArtist(string artist)
+        // Method takes the artist name passed by user in Home() method & makes API call to MusicBrainz. 
+        private static async Task GetRecordingsByArtist(string artist)
         {
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Add("user-agent", "Airelogic/1.0.0 ( tauseef494@gmail.com )");
@@ -42,7 +45,10 @@ namespace AvgWordCountCalculator
 
         }
 
-        public static async Task GetAverageWordCountByArtistAndTitle(string artist, List<RecordingInformation> result)
+        // The following method takes the recordings retreieved by GetRecordingsByArtist and the artist name and makes a call 
+        // to Lyrics.Ovh API & retrieves lyrics for given artist.
+        // Any exceptions are caught and added to a list which a user can optionally view.
+        private static async Task GetAverageWordCountByArtistAndTitle(string artist, List<RecordingInformation> result)
         {
             List<int> list = new List<int>();
             List<string> msgList = new List<string>();
@@ -90,12 +96,13 @@ namespace AvgWordCountCalculator
             else
             {
 
-                Console.WriteLine($"\nSorry, no results were found for {artist}! \n{searchOrExitMsg}\n");
+                Console.WriteLine($"\nSorry, no results were found for {artist}! press Y to try another artist, or N to exit.");
                 await UserResponseValidator(msgList);
             }
         }
 
-        public static async Task UserResponseValidator(List<string> msgList)
+        // This method handles & validates user responses once results have been provided.
+        private static async Task UserResponseValidator(List<string> msgList)
         {
             var userInput = Console.ReadLine();
             var positiveInput = userInput.Contains("Y", StringComparison.CurrentCultureIgnoreCase);
