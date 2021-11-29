@@ -11,7 +11,7 @@ namespace AvgWordCountCalculator
     public class AverageWordCountCalculator
     {
         private static readonly HttpClient client = new HttpClient();
-        public const string searchOrExitMsg = "Please press Y to try another artist or N to exit.";
+        public const string searchOrExitMsg = "To view list of songs not found please type V, press Y to try another artist, or N to exit.";
 
         static async Task Main(string[] args)
         {
@@ -45,6 +45,7 @@ namespace AvgWordCountCalculator
         public static async Task GetAverageWordCountByArtistAndTitle(string artist, List<RecordingInformation> result)
         {
             List<int> list = new List<int>();
+            List<string> msgList = new List<string>();
             var title = " ";
 
             foreach (var recording in result)
@@ -65,40 +66,43 @@ namespace AvgWordCountCalculator
 
                     list.Add(msgLength);
 
-
                 }
                 catch (Exception e)
                 {
+                    
                     if (e.Message != null)
                     {
-                        Console.WriteLine($"\nLyrics for {title} could not be found!");
+                        msgList.Add($"\nLyrics for {title} could not be found!");
                     }
                 }
 
-            }
+            } 
 
             if (list.Count > 0)
             {
                 var average = (int)Queryable.Average(list.AsQueryable());
-
-                Console.WriteLine($"\nBased on {list.Count} results, the average number of words in a song by {artist} is {average}. \n{searchOrExitMsg}\n");
-                await UserResponseValidator();
+                if (msgList.Count > 0)
+                {
+                    Console.WriteLine($"\nBased on {list.Count} results, the average number of words in a song by {artist} is {average}. \n{searchOrExitMsg}.\n");
+                    await UserResponseValidator(msgList);
+                }
             }
             else
             {
 
                 Console.WriteLine($"\nSorry, no results were found for {artist}! \n{searchOrExitMsg}\n");
-                await UserResponseValidator();
+                await UserResponseValidator(msgList);
             }
         }
 
-        public static async Task UserResponseValidator()
+        public static async Task UserResponseValidator(List<string> msgList)
         {
             var userInput = Console.ReadLine();
             var positiveInput = userInput.Contains("Y", StringComparison.CurrentCultureIgnoreCase);
             var negativeInput = userInput.Contains("N", StringComparison.CurrentCultureIgnoreCase);
+            var viewListInput = userInput.Contains("V", StringComparison.CurrentCultureIgnoreCase);
 
-            while (!positiveInput && !negativeInput)
+            while (!positiveInput && !negativeInput && !viewListInput)
             {
                 Console.WriteLine($"\nInvalid input. {searchOrExitMsg}\n");
 
@@ -115,6 +119,12 @@ namespace AvgWordCountCalculator
             else if (negativeInput)
             {
                 Environment.Exit(0);
+            }
+            else if (viewListInput)
+            {
+                msgList.ForEach(item => Console.WriteLine(item));
+                Console.WriteLine("\nPress Y to try another artist, or N to exit");
+               await UserResponseValidator(msgList);
             }
         }
 
