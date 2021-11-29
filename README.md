@@ -17,9 +17,9 @@ The app will then give the user a choice to searhc again or exit the app.
 
 To run the tests, change to the AireLogic/AvgWordCountCalculator directory and execute the following command:
 
-`dotnet build AireLogic.sln`
+`dotnet build AvgWordCountCalculator.sln`
 
-`dotnet test AireLogic.sln`
+`dotnet test AvgWordCountCalculator.sln`
 
 
 
