@@ -124,7 +124,7 @@ namespace AvgWordCountCalculator
             {
                 msgList.ForEach(item => Console.WriteLine(item));
                 Console.WriteLine("\nPress Y to try another artist, or N to exit");
-               await UserResponseValidator(msgList);
+                await UserResponseValidator(msgList);
             }
         }
 
