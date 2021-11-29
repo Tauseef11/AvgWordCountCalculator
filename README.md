@@ -15,9 +15,8 @@ To build and run the app, change to the /AvgWordCountCalculator directory and ex
 
 `dotnet run`
 
-Here you will be asked to enter an artist's name, the app will find any songs available and return an average word count across the songs it found.
-The app will notify the the user if lyrics for a particular song were not found or if there were no results found.
-The app will then give the user a choice to searhc again or exit the app.
+Here the user will be asked to enter an artist's name, the app will find any songs available and return an average word count across the songs it found.
+The user is then given a choice to view the songs where lrics were not found, search again or exit the app. Alternatively, if no results were found, the user will be notified of this & be given a choice to search again or exit. 
 
 To run the tests, change to the AvgWordCountCalculator directory and execute the following command:
 
